@@ -12,11 +12,7 @@
 8. update the app.py
 
 
-# How to run?
-## STEPS:
-#### Clone the repository
 
-    https://github.com/entbappy/End-to-end-Text-Summarization
 
 # STEP 01- Create a conda environment after opening the repository
 
