@@ -1,3 +1,12 @@
+# Project-specific generated artifacts and weights
+artifacts/
+logs/
+*.log
+research/samsum_dataset/
+summarizer_data.zip
+summarizer-data.zip
+data.zip
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
