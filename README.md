@@ -306,21 +306,6 @@ In compliance with academic standards:
 
 ---
 
-## Defense & Technical Interview Guide
-
-Key technical aspects to discuss during an admissions or technical review:
-
-1. **Why PEGASUS instead of standard BART or T5?**
-   - *Answer*: While BART and T5 rely on general token or text-span masking, PEGASUS uses Gap Sentences Generation (GSG), masking entire sentences chosen by importance metrics. This trains the model from scratch to synthesize documents into summary-like representations.
-2. **Why evaluate against Lead-3?**
-   - *Answer*: Lead-3 serves as a foundational heuristic baseline. In news corpora, it is notoriously hard to beat due to inverted pyramid journalism. In dialogue summarization, comparing against Lead-3 demonstrates that the model is genuinely abstracting multi-turn conversation rather than picking early greeting lines.
-3. **How does gradient accumulation solve memory limitations?**
-   - *Answer*: PEGASUS-large has ~568 million parameters. On consumer hardware (e.g. 4-8 GB VRAM), batch size 16 causes Out-Of-Memory (OOM). We set `per_device_train_batch_size: 1` and `gradient_accumulation_steps: 16`, accumulating gradients across 16 micro-batches before calling `optimizer.step()`, simulating an effective batch size of 16.
-4. **How are inference edge cases handled?**
-   - *Answer*: The `PredictionPipeline.validate_input` method rejects `None`, non-strings, whitespace, and under-length strings with descriptive exceptions. Sequences longer than 1024 tokens are safely truncated with attention masks to avoid positional embedding crashes.
-
----
-
 ## License
 
 This project is licensed under the [MIT License](LICENSE).
